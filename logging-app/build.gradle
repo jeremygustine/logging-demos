@@ -25,6 +25,11 @@ repositories {
 
 
 dependencies {
+	compile (project(':library-with-jcl')) /*{
+        exclude group: 'commongs.logging', module: 'commongs.logging'
+    }*/
+	
+	
 	implementation('org.springframework.boot:spring-boot-starter')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
