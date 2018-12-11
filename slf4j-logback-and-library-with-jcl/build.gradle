@@ -1,0 +1,25 @@
+plugins {
+    id 'groovy'
+    id 'java'
+}
+
+version 'unspecified'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile (project(':library-with-jcl')) /*{
+        exclude group: 'commongs.logging', module: 'commongs.logging'
+    }*/
+
+    compile group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.7.25'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3' //this transitively pulls in logback-core and slf4j-api
+
+    
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+}

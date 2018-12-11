@@ -1,0 +1,26 @@
+plugins {
+    id 'groovy'
+    id 'java'
+}
+
+version 'unspecified'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':library-with-log4j')
+    compile (group: 'org.slf4j', name: 'slf4j-api', version: '1.5.10'){force = true}
+    
+    //redirect log4j calls to slf4j
+    compile group: 'org.slf4j', name: 'log4j-over-slf4j', version: '1.7.25'
+
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
+
+
+
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+}
