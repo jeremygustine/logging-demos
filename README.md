@@ -1,10 +1,11 @@
 
 ## Table of Contents
 * [The Many Java Logging Frameworks](#frameworks) 
+* [Useful Resources](#useful-resources) 
 
 ## <a name="frameworks"></a> The Many Java Logging Frameworks
 
-### The Console - System.out, System.err
+#### The Console - System.out, System.err
 
 This is the oldest method of logging with Java. Logs are always printed to the console, regardless of where the
 application is running (e.g. development, test, production). In production, stdout is commonly redirected to /dev/null
@@ -18,7 +19,7 @@ Cons:
 * It is always "on"
 
 
-### Log4j
+#### Log4j
 
 Log4j introduced the idea of "logging levels" to mitigate the "always on" nature of console logging. This allowed
 different environments to choose which logs would be written. In addition, Log4j introduced "appenders", which are
@@ -35,7 +36,7 @@ Cons:
 
 http://logging.apache.org/log4j/1.2/manual.html
 
-### Java Util Logging aka JUL
+#### Java Util Logging aka JUL
 
 Log4j became extremely popular in the Java community. This gave rise to the development of a standard library, which
 was introduced in Java 1.4 - java.util.logging. JUL never caught on due to limited out-of-the-box output functionality
@@ -51,7 +52,7 @@ Cons:
 
 http://www.vogella.com/tutorials/Logging/article.html
 
-### Jakara Commons Logging aka Apache Commons Logging aka JCL aka ACL
+#### Jakara Commons Logging aka Apache Commons Logging aka JCL aka ACL
 
 Now that Java developers are using both Log4j and JUL, application developers must configure two different logging
 implementations. Commons Logging was developed to help mitigate this situation. JCL is a logging facade much like 
@@ -76,7 +77,7 @@ Cons:
 https://commons.apache.org/proper/commons-logging/
 https://commons.apache.org/proper/commons-logging/guide.html
 
-### Simple Logging Facade For Java aka SLF4J
+#### Simple Logging Facade For Java aka SLF4J
 
 SLF4j was designed to serve as a logging facade for Java without the problems of JCL. SLF4j uses static binding rather
 than JCL's dynamic binding to get around many of JCL's problems (https://v4forums.wordpress.com/2008/12/27/slf4j-vs-jcl-dynamic-binding-vs-static-binding/).
@@ -91,7 +92,7 @@ Pros:
 Cons:
 * Redirecting logs does incur a small performance penalty
 
-### Logback
+#### Logback
 
 Logback is simply a native implementation of the SLF4j API. It was intended to be the successor of log4j. The
 combination of SLF4j and Logback corrects one of Log4j's main problems - which is the coupling of the logging API and
@@ -108,7 +109,7 @@ Pros:
 Cons:
 * Not quite as performance at Log4j2
 
-### Log4j2
+#### Log4j2
 
 Log4j2 is the newest of the Java logging frameworks. It was designed with performance in mind and takes advantage
 of modern Java language features.
@@ -124,7 +125,7 @@ Cons:
 * Yet another logging framework
 
 
-# Using SLF4j
+## Using SLF4j
 
 https://www.slf4j.org/manual.html
 
@@ -135,7 +136,7 @@ API, which are then redirected to Logback.
 
 Example: Log4j -> redirect calls to the SLF4j API -> SLF4j -> redirect calls to Logback -> Logback
 
-### SLF4j bindings
+#### SLF4j bindings
 
 The binding on your classpath determines which implementation of logging framework SLF4j will redirect to. The
 binding will determining the final destination of logs. A binding must be present on the classpath for SLF4j to use
@@ -151,7 +152,7 @@ api and forwards the data to log4j.
   overhead is used.
 * `log4j-slf4j-impl` - redirects calls to Log4j2. The Log4j2 dependencies must also be present on the classpath.
 
-### SLF4j bridges
+#### SLF4j bridges
 
 Check out the diagrams on: https://www.slf4j.org/legacy.html
 
@@ -171,7 +172,7 @@ https://www.slf4j.org/legacy.html
 * `log4j-over-slf4j` - redirects calls from Log4j to SLF4j
 * `log4j-to-slf4j` - redirects calls from Log4j2 to SLF4j
 
-### SLF4j Gotchas
+#### SLF4j Gotchas
 
 * Be careful that you only include one binding on your classpath. If you include more than one, SLF4j will
   simply pick one and log the following warning: `SLF4J: Class path contains multiple SLF4J bindings.`. It may be
@@ -202,7 +203,7 @@ https://www.slf4j.org/legacy.html
 
 * Excellent discussion around using Log4j2 with Spring Boot: https://stackoverflow.com/questions/41498021/is-it-worth-to-use-slf4j-with-log4j2
 
-# Tips for library authors
+## Tips for library authors
 Libraries should depend on slf4j so that the final application consuming those libraries can choose the implementation. 
 The author of Log4j, SLF4j, and Logback makes a compelling case on StackOverflow (https://stackoverflow.com/questions/11359187/why-not-use-java-util-logging)
 Even that, though, is not always 100% effective (See "Are SLF4J versions backward compatible?" https://www.slf4j.org/faq.html#compatibility).
@@ -213,7 +214,7 @@ transitively included.
 With gradle, use `compileOnly`: https://blog.gradle.org/introducing-compile-only-dependencies
 With maven, use `provided` or `optional`: https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html
 
-# Useful Resources
+## <a name="useful-resources"></a> Useful Resources
 * State of logging in Java: https://stackify.com/logging-java/
 * Log4j page: https://logging.apache.org/log4j/1.2/manual.html
 * Log4j2 article: https://stackify.com/log4j2-java/
