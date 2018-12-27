@@ -5,10 +5,14 @@ public class Main {
     private static Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
-        logger.info("Logging from log4j2!"); //TODO: use the lambda syntax!
+        //Log4j2 lazy logging: https://www.baeldung.com/log4j-2-lazy-logging
+
+        logger.info("Logging from {}!", () -> getLoggerString());
+    }
+
+    private static String getLoggerString() {
+        return "Log4j2";
     }
 }
 
 //TODO what if only the api library is included?
-
-//TODO no Log4j 2 configuration file found

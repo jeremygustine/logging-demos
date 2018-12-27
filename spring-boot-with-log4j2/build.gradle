@@ -1,0 +1,40 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.pivotal.spring-boot-with-log4j2'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter') /*{
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }*/
+    compile('org.springframework.boot:spring-boot-starter-web') /*{
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }*/
+    compile('org.springframework.boot:spring-boot-starter-log4j2:2.1.1.RELEASE')
+
+}
+
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
