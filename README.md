@@ -1,7 +1,17 @@
 
 ## Table of Contents
 * [The Many Java Logging Frameworks](#frameworks) 
+  - The console
+  - Log4j
+  - Java Util Logging
+  - Jakarta/Apache Commons Logging
+  - Slf4j
+  - Logback
+  - Log4j2
+* [Using SLF4J](#using-slf4j) 
+* [Tips for library authors](#library-authors) 
 * [Useful Resources](#useful-resources) 
+* [Project Descriptions](#project-descriptions) 
 
 ## <a name="frameworks"></a> The Many Java Logging Frameworks
 
@@ -125,7 +135,7 @@ Cons:
 * Yet another logging framework
 
 
-## Using SLF4j
+## <a name="using-slf4j"></a> Using SLF4j
 
 https://www.slf4j.org/manual.html
 
@@ -203,7 +213,7 @@ https://www.slf4j.org/legacy.html
 
 * Excellent discussion around using Log4j2 with Spring Boot: https://stackoverflow.com/questions/41498021/is-it-worth-to-use-slf4j-with-log4j2
 
-## Tips for library authors
+## <a name="library-authors"></a> Tips for library authors
 Libraries should depend on slf4j so that the final application consuming those libraries can choose the implementation. 
 The author of Log4j, SLF4j, and Logback makes a compelling case on StackOverflow (https://stackoverflow.com/questions/11359187/why-not-use-java-util-logging)
 Even that, though, is not always 100% effective (See "Are SLF4J versions backward compatible?" https://www.slf4j.org/faq.html#compatibility).
@@ -222,7 +232,7 @@ With maven, use `provided` or `optional`: https://maven.apache.org/guides/introd
 
 
 
-# Project Descriptions
+# <a name="project-descriptions"></a> Project Descriptions
 
 TODO
 
