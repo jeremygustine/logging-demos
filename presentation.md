@@ -5,11 +5,12 @@ as well as some more complicated examples.
 
 - Projects
     - old-school
-    - java-util-logging - no dependency required!
     - log4j - show config
+    - java-util-logging - no dependency required!
     - logback - show config
     - What if I pull in a library that is using another framework? What do I have to do?
         - log4j2-and-library-with-log4j
+        - This works, but it requires configuring both implementations.
     - Well, what if I only want to configure one implementation?
         - You could use JCL, but don't. Instead, use SLF4J.
         - Go over the `Using SLF4J` section in the README, including bridges and bindings.
@@ -73,3 +74,7 @@ as well as some more complicated examples.
                    dependencies.
             - Show lazy logging in project
     
+    
+    
+    #TODO - prove slf4j binding is being used by showing config file
+    #I think I can use slf4j-logback-and-library-with-log4j for that purpose

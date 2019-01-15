@@ -234,10 +234,35 @@ With maven, use `provided` or `optional`: https://maven.apache.org/guides/introd
 * Logback stuff: https://stackify.com/logging-logback/
 
 
-
 ## <a name="project-descriptions"></a> Project Descriptions
 
-TODO
+* java-commons-logging - logging with JCL
+* java-util-logging - logging with JUL
+* library-with-jcl - a library that has included JCL as a dependency
+* library-with-log4j - a library that has included Log4j as a dependency
+* log4j2 - logging with Log4J2
+* log4j2-and-library-with-log4j - This project illustrates how to use two different logging implementations
+simultaneously by providing separate configuration for both log4j2 and log4j.
+* log4j-logging - logging with Log4j
+* logback - logging with logback
+* old-school - logging using System.out and System.err
+* slf4j-log4j-infinite-loop - This project inclues both the log4j binding and bridge, which causes a StackOverflowError.
+* slf4j-logback-and-library-with-jcl - This project uses slf4j with the logback binding and pull in a library that
+depends on JCL. The dependency on JCL is excluded and the jcl-over-slf4j bridge library is used instead.
+* slf4j-logback-and-library-with-log4j - Similar to slf4j-logback-and-library-with-jcl, but using log4j instead of jcl.
+* slf4j-noop - Using slf4j-api without any binding library
+* slf4j-simple - Using slf4j with the slf4j-simple binding
+* slf4j-simple-and-hadoop-client-library - This project uses slf4j with the slf4j-simple binding and includes the
+hadoop-client dependency. The hadoop-client dependency, for some reason, includes the slf4j-log4j12 binding library
+transitively. This project is used for illustrating how one must be careful when including libraries because they can
+cause bad behavior - like missing logs, for example.
+* slf4j-simple-and-log4j-bindings - This project includes slf4j and both the slf4j-simple and log4j bindings. This
+project is used to show the "multiple bindings" warnings that slf4j will output on startup.
+* spring-boot-default-config-and-library-with-jcl - This project shows excluding the JCL dependency from a library
+when using spring-boot-starter.
+* spring-boot-with-default-config - This project only includes spring-boot-starter. Check out the dependency tree to
+see what comes packaged for you.
+* spring-boot-with-log4j2 - This project shows the easiest way to start working with log4j2 in a spring boot application.
 
 
 
@@ -249,13 +274,3 @@ TODO
 
 
 
-========================TODO==================================
-table of contents
-
-project explanations
-
-gradle alternative to maven enforcer plugin?
-
-
-During demo/exercise, show the process of manually figuring out which classes to exclude, etc.
-Check out the process here: https://vanwilgenburg.wordpress.com/2017/02/13/sl4j-setup/
