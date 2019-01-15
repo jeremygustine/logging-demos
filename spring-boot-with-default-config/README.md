@@ -1,6 +1,6 @@
 This project is intended to show the dependency tree given an included `spring-boot-starter` dependency.
 
-`./gradlew spring-boot-with-default-config:dependencies`
+`./gradlew spring-boot-with-default-config:dependencies --configuration compile`
 
 
 ```

@@ -17,4 +17,5 @@ include 'spring-boot-with-log4j2'
 include 'log4j2-and-library-with-log4j'
 include 'spring-boot-with-default-config'
 include 'hadoop'
+include 'slf4j-simple-and-log4j-bindings'
 
