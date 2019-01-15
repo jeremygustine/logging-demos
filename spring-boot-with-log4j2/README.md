@@ -100,6 +100,6 @@ Dependency tree for this project:
      +--- org.apache.logging.log4j:log4j-jul:2.11.1
      |    \--- org.apache.logging.log4j:log4j-api:2.11.1
      \--- org.slf4j:jul-to-slf4j:1.7.25
-          \--- org.slf4j:slf4j-api:1.7.25
+          \--- org.slf4j:slf4j-api:1.7.25[
 
 ```

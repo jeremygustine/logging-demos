@@ -15,6 +15,9 @@ public class RunOnStartup implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         SLF4J_LOGGER.info("Logging using slf4j api and log4j2 implementation!");
-        LOG4J2_LOGGER.info("Logging using log4j2 api and log4j2 implementation!");
+        LOG4J2_LOGGER.info("{}", () -> getLogMessage());
+    }
+    private static String getLogMessage() {
+        return "Logging using log4j2 api and log4j2 implementation!";
     }
 }

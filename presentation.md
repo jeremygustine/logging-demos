@@ -37,7 +37,19 @@ as well as some more complicated examples.
             - Now that we've explained bridges and bindings, can anybody tell me what will happen and how?
         - Libraries can cause you pain
             - This is really a more specific example of the first gotcha
-            - TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            - Make sure the custom binding is commented out
+            - Show the build.gradle. I have three dependencies, and I intend to use slf4j-simple. Nothing out of the ordinary, right?
+            - Run the application. Notice that two bindings are found. How?
+            - Also note that it chose the Simple binding and it DID output a log. Great!
+            - Run this: `./gradlew hadoop:dependencies --configuration compile`
+            - Show that the tree includes the slf4j-log4j12 binding
+            - Explain that the JVM can non-deterministically choose for one of the bindings to load.
+            - Force the log4j12 binding by commenting out the static binder code and running.  This simulates the JVM picking log4j12.
+            - Now it uses Log4j. Since we did not configure it we get warnings - and we get no logs! Yuck.
+            - Note that SLF4J printed the custom static binder out in the multiple bindings output.
+            - Not exactly relevant, but explain why commenting out that static binder worked. 
+            - Show the 'Tips for library authors' section.
+            - hadoop-client should probably not include that binding with their distribution.
     - Spring Boot
         - We use spring boot frequently, so let's talk about how it handles logging
         - spring-boot-with-default-config
@@ -52,5 +64,12 @@ as well as some more complicated examples.
             - Explain that if I pull in a library with commons logging, I would need to exclude the real implementation
               and then include the JCL bridge (if I'm using `spring-boot-starter` 2.x)
         - spring-boot-with-log4j2
-            - TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            - If you would like to use Log4j2 with Spring Boot 2+, you can include the `spring-boot-starter-log4j2`
+              dependency. You will also have to exclude the `spring-boot-starter-logging` dependency from all
+              of the `spring-boot-starter-*` dependencies that you are including.  There are two ways to accomplish
+              this:
+                1. Exclude it from each `starter` project manually.
+                2. Include a `configuration` that will automatically exclude it from all of the `starter`
+                   dependencies.
+            - Show lazy logging in project
     
