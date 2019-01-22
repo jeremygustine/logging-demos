@@ -59,9 +59,9 @@ Pros:
 * No dependencies required
 
 Cons:
-* Poor semantics around log levels (e.g. FINER - finer than what?)
 * Limited out-of-the-box output adapters
 * Poor adoption
+* Poor performance
 
 http://www.vogella.com/tutorials/Logging/article.html
 
@@ -71,7 +71,7 @@ Now that Java developers are using both Log4j and JUL, application developers mu
 implementations. Commons Logging was developed to help mitigate this situation. JCL is a logging facade much like 
 SLF4j. It was recommended to be used by library authors who desired logging without tying consumers of the library down
 to a particular logging implementation (http://radio-weblogs.com/0122027/2003/08/15.html). JCL relies on classloading
-trickery to discovery the logging framework that is being used at runtime. Unfortunately, this led to unexpected
+trickery to discover the logging framework that is being used at runtime. Unfortunately, this led to unexpected
 behavior, hard to debug classloading problems, and even memory leaks (https://articles.qos.ch/thinkAgain.html). JCL
 is no longer recommended to use.
 
@@ -79,7 +79,7 @@ Additional great information about JCL in the accepted answer here:
 https://stackoverflow.com/questions/3222895/what-is-the-issue-with-the-runtime-discovery-algorithm-of-apache-commons-logging
 
 Pros:
-* Java's first logging facade that can discovery the logging implementation at runtime
+* Java's first logging facade that can discover the logging implementation at runtime
 
 Cons:
 * High complexity
@@ -246,7 +246,7 @@ simultaneously by providing separate configuration for both log4j2 and log4j.
 * log4j-logging - logging with Log4j
 * logback - logging with logback
 * old-school - logging using System.out and System.err
-* slf4j-log4j-infinite-loop - This project inclues both the log4j binding and bridge, which causes a StackOverflowError.
+* slf4j-log4j-bridge-and-binding - This project inclues both the log4j binding and bridge, which causes a StackOverflowError.
 * slf4j-logback-and-library-with-jcl - This project uses slf4j with the logback binding and pull in a library that
 depends on JCL. The dependency on JCL is excluded and the jcl-over-slf4j bridge library is used instead.
 * slf4j-logback-and-library-with-log4j - Similar to slf4j-logback-and-library-with-jcl, but using log4j instead of jcl.

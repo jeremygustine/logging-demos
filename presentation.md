@@ -16,8 +16,9 @@ as well as some more complicated examples.
         - Go over the `Using SLF4J` section in the README, including bridges and bindings.
         - slf4j-noop
         - slf4j-simple
-        - slf4j-logback-and-library-with-log4j
+        - slf4j-logback-and-library-with-jcl - show the configuration before running!
             - I only have to configure one library (unlike the log4j2-and-library-with-log4j project). Yay!
+            - Run again, this time comment out the jcl-over-slf4j lib. Notice that we don't see "logging via slf4j!!!"
     - That seems so simple! Just you wait...
         - Binding problems
             - Go over first gotcha
@@ -34,9 +35,10 @@ as well as some more complicated examples.
             - This is hard to debug
         - Infinite loop
             - Don't go over the gotcha yet...
-            - Show the build.gradle for the project
+            - Show the build.gradle for the project (slf4j-log4j-bridge-and-binding)
             - Now that we've explained bridges and bindings, can anybody tell me what will happen and how?
-        - Libraries can cause you pain
+            - Finally - run it!
+        - Libraries can cause you pain (slf4j-simple-and-hadoop-client-library)
             - This is really a more specific example of the first gotcha
             - Make sure the custom binding is commented out
             - Show the build.gradle. I have three dependencies, and I intend to use slf4j-simple. Nothing out of the ordinary, right?
@@ -51,6 +53,7 @@ as well as some more complicated examples.
             - Not exactly relevant, but explain why commenting out that static binder worked. 
             - Show the 'Tips for library authors' section.
             - hadoop-client should probably not include that binding with their distribution.
+            - Run again, excluding a dependency -- TODO!!!!
     - Spring Boot
         - We use spring boot frequently, so let's talk about how it handles logging
         - spring-boot-with-default-config
