@@ -145,7 +145,9 @@ https://www.slf4j.org/manual.html
 SLF4j provides a simple API that redirects to your logging implementation of choice. In addition to redirecting calls
 to the SLF4j API to your choice of logging implementation, SLF4j provides libraries than can redirect logging calls from
 other implementations to SLF4j. For example, a library that uses Log4j can have those calls redirected to the SLF4j
-API, which are then redirected to Logback.
+API, which are then redirected to Logback. Typical projects using SLF4J will include the SLF4J API, a SLF4j binding library,
+and one or more bridge libraries. If an implementation other than Logback is desired, then the library for the implementation
+must be included.
 
 Example: Log4j -> redirect calls to the SLF4j API -> SLF4j -> redirect calls to Logback -> Logback
 

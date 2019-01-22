@@ -1,7 +1,7 @@
-package org.slf4j.impl;
-
-import org.slf4j.ILoggerFactory;
-import org.slf4j.spi.LoggerFactoryBinder;
+//package org.slf4j.impl;
+//
+//import org.slf4j.ILoggerFactory;
+//import org.slf4j.spi.LoggerFactoryBinder;
 
 /*
 Last answer here: https://stackoverflow.com/questions/11433926/force-slf4j-to-use-logback
@@ -13,26 +13,26 @@ Only one StaticLoggerBinder class is used. Since this is MY code, it is first in
 /**
  * Force use of Log4j binding for logging.
  */
-@SuppressWarnings("UnusedDeclaration")
-public class StaticLoggerBinder implements LoggerFactoryBinder {
-    private static final StaticLoggerBinder SINGLETON = new StaticLoggerBinder();
-
-    public static String REQUESTED_API_VERSION = "1.6";
-
-    public static final StaticLoggerBinder getSingleton() {
-        return SINGLETON;
-    }
-
-    private StaticLoggerBinder() {
-    }
-
-    @Override
-    public ILoggerFactory getLoggerFactory() {
-        return new Log4jLoggerFactory();
-    }
-
-    @Override
-    public String getLoggerFactoryClassStr() {
-        return "org.slf4j.impl.Log4jLoggerFactory";
-    }
-}
+//@SuppressWarnings("UnusedDeclaration")
+//public class StaticLoggerBinder implements LoggerFactoryBinder {
+//    private static final StaticLoggerBinder SINGLETON = new StaticLoggerBinder();
+//
+//    public static String REQUESTED_API_VERSION = "1.6";
+//
+//    public static final StaticLoggerBinder getSingleton() {
+//        return SINGLETON;
+//    }
+//
+//    private StaticLoggerBinder() {
+//    }
+//
+//    @Override
+//    public ILoggerFactory getLoggerFactory() {
+//        return new Log4jLoggerFactory();
+//    }
+//
+//    @Override
+//    public String getLoggerFactoryClassStr() {
+//        return "org.slf4j.impl.Log4jLoggerFactory";
+//    }
+//}

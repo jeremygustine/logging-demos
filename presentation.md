@@ -5,7 +5,7 @@ as well as some more complicated examples.
 
 - Projects
     - old-school
-    - log4j - show config
+    - log4j-logging - show config
     - java-util-logging - no dependency required!
     - logback - show config
     - What if I pull in a library that is using another framework? What do I have to do?
@@ -40,20 +40,21 @@ as well as some more complicated examples.
             - Finally - run it!
         - Libraries can cause you pain (slf4j-simple-and-hadoop-client-library)
             - This is really a more specific example of the first gotcha
-            - Make sure the custom binding is commented out
+            - Make sure the custom binding `StaticLoggerBinder` class is commented out
             - Show the build.gradle. I have three dependencies, and I intend to use slf4j-simple. Nothing out of the ordinary, right?
             - Run the application. Notice that two bindings are found. How?
             - Also note that it chose the Simple binding and it DID output a log. Great!
             - Run this: `./gradlew hadoop:dependencies --configuration compile`
             - Show that the tree includes the slf4j-log4j12 binding
-            - Explain that the JVM can non-deterministically choose for one of the bindings to load.
-            - Force the log4j12 binding by commenting out the static binder code and running.  This simulates the JVM picking log4j12.
+            - Explain that the JVM can non-deterministically choose for one of the bindings to load. (https://www.slf4j.org/codes.html#multiple_bindings)
+            - Force the log4j12 binding by uncommenting the static binder code and running.  This simulates the JVM picking log4j12.
             - Now it uses Log4j. Since we did not configure it we get warnings - and we get no logs! Yuck.
             - Note that SLF4J printed the custom static binder out in the multiple bindings output.
             - Not exactly relevant, but explain why commenting out that static binder worked. 
+            - Ask the class: How do we fix this? We can exclude log4j from hadoop-client and include the log4j bridge.
             - Show the 'Tips for library authors' section.
             - hadoop-client should probably not include that binding with their distribution.
-            - Run again, excluding a dependency -- TODO!!!!
+            - You may want to test your lib with logging....use the tips described in 'Tips for library authors' section.
     - Spring Boot
         - We use spring boot frequently, so let's talk about how it handles logging
         - spring-boot-with-default-config
@@ -78,6 +79,4 @@ as well as some more complicated examples.
             - Show lazy logging in project
     
     
-    
-    #TODO - prove slf4j binding is being used by showing config file
-    #I think I can use slf4j-logback-and-library-with-log4j for that purpose
+   
