@@ -2,7 +2,7 @@
 <Configuration status="WARN" monitorInterval="30">
     <Properties>
         <Property name="LOG_PATTERN">
-            Log4J2 says: %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} --- [%15.15t] %-40.40c{1.} : %m%n%ex
+            Log4J2 says: %d{yyyy-MM-dd HH:mm:ss.SSS} %5p --- [%15.15t] : %msg%n
         </Property>
     </Properties>
     <Appenders>
