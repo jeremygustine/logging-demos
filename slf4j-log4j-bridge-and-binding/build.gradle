@@ -12,9 +12,6 @@ repositories {
 }
 
 dependencies {
-    //delegate log4j calls to slf4j
     compile (group: 'org.slf4j', name: 'log4j-over-slf4j', version: '1.5.10'){force = true}
-
-    //delegate slf4j calls to log4j
     compile (group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.5.10'){force = true}
 }
