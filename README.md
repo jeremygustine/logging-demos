@@ -65,14 +65,14 @@ Cons:
 
 http://www.vogella.com/tutorials/Logging/article.html
 
-#### <a name="jcl"></a> Jakara Commons Logging aka Apache Commons Logging aka JCL aka ACL
+#### <a name="jcl"></a> Jakarta Commons Logging aka Apache Commons Logging aka JCL aka ACL
 
 Now that Java developers are using both Log4j and JUL, application developers must configure two different logging
 implementations. Commons Logging was developed to help mitigate this situation. JCL is a logging facade much like 
 SLF4j. It was recommended to be used by library authors who desired logging without tying consumers of the library down
 to a particular logging implementation (http://radio-weblogs.com/0122027/2003/08/15.html). JCL relies on classloading
 trickery to discover the logging framework that is being used at runtime. Unfortunately, this led to unexpected
-behavior, hard to debug classloading problems, and even memory leaks (https://articles.qos.ch/thinkAgain.html). JCL
+behavior, hard to debug classloading problems, and even memory leaks (http://articles.qos.ch/thinkAgain.html). JCL
 is no longer recommended to use.
 
 Additional great information about JCL in the accepted answer here: 
@@ -88,6 +88,7 @@ Cons:
 * Just don't use it
 
 https://commons.apache.org/proper/commons-logging/
+
 https://commons.apache.org/proper/commons-logging/guide.html
 
 #### <a name="slf4j"></a> Simple Logging Facade For Java aka SLF4J
@@ -112,7 +113,9 @@ combination of SLF4j and Logback corrects one of Log4j's main problems - which i
 implementation.
 
 https://logback.qos.ch/
+
 https://logback.qos.ch/reasonsToSwitch.html
+
 https://stackify.com/logging-logback/
 
 Pros:
@@ -120,7 +123,7 @@ Pros:
 * Better performance than Log4j
 
 Cons:
-* Not quite as performance at Log4j2
+* Not quite as performant at Log4j2
 
 #### <a name="log4j2"></a> Log4j2
 
@@ -220,13 +223,13 @@ https://www.slf4j.org/legacy.html
 
 ## <a name="library-authors"></a> Tips for library authors
 Libraries should depend on slf4j so that the final application consuming those libraries can choose the implementation. 
-The author of Log4j, SLF4j, and Logback makes a compelling case on StackOverflow (https://stackoverflow.com/questions/11359187/why-not-use-java-util-logging)
+The author of Log4j, SLF4j, and Logback makes a compelling case on StackOverflow (https://stackoverflow.com/questions/11359187/why-not-use-java-util-logging).
 Even that, though, is not always 100% effective (See "Are SLF4J versions backward compatible?" https://www.slf4j.org/faq.html#compatibility).
-Library authors may want to include an slf4j binding so that they can test with a logging implementation. Remove the burden
-of exluding the implementation dependency by your consumer by declaring the dependency in such a way that it is not
-transitively included.
+Library authors may want to include an slf4j binding so that they can test with a logging implementation. Remove the consumer's burden
+of excluding the implementation dependency by declaring the dependency in such a way that it is not transitively included.
 
 With gradle, use `compileOnly`: https://blog.gradle.org/introducing-compile-only-dependencies
+
 With maven, use `provided` or `optional`: https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html
 
 ## <a name="useful-resources"></a> Useful Resources

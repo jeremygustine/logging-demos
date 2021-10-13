@@ -8,11 +8,11 @@ compile (group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.5.10')
 ```
 
 In this case, the log4j binding module will cause SLF4J to delegate calls to the log4j
-implementation. The log4j bridgingm module will cause all log4j calls to be delegated
+implementation. The log4j bridging module will cause all log4j calls to be delegated
 to SLF4J. This causes an infinite loop that will eventually end in a StackOverflow error.
 
 Since version 1.5.11, SLF4J will detect the inclusion of both the binding and bridging
-libraries and will preempty the infinite loop:
+libraries and will preempt the infinite loop:
 
 ```
 Exception in thread "main" java.lang.ExceptionInInitializerError
