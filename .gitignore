@@ -17,3 +17,6 @@
 *.iml
 *.ipr
 **/out/**
+
+*/build/*
+.DS_Store
